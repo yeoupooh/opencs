@@ -1,0 +1,73 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B2F2688-7621-4CD4-A916-979499465A1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCS.Common</RootNamespace>
+    <AssemblyName>OpenCS.Common</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\OpenCS.Common.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\ActionEnums.cs" />
+    <Compile Include="Action\IAction.cs" />
+    <Compile Include="Action\IActionHandler.cs" />
+    <Compile Include="Action\PropertyAction.cs" />
+    <Compile Include="GenericClassFactory.cs" />
+    <Compile Include="IMessageDialog.cs" />
+    <Compile Include="IMessageDialogFactory.cs" />
+    <Compile Include="Logging\ConsoleLogger.cs" />
+    <Compile Include="Logging\ILoggable.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\IResourceChangeable.cs" />
+    <Compile Include="Resource\IResourceChangeFilter.cs" />
+    <Compile Include="Resource\IResourceChanger.cs" />
+    <Compile Include="Resource\IResourceManager.cs" />
+    <Compile Include="Resource\IResourceProvidable.cs" />
+    <Compile Include="Resource\IResourceProvider.cs" />
+    <Compile Include="Resource\ResourceChanger.cs" />
+    <Compile Include="Resource\ResourceManager.cs" />
+    <Compile Include="StringUtils.cs" />
+    <Compile Include="Xml\XmlDocumenter.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>set __CONFIG_NAME=$(ConfigurationName)
+echo __CONFIG_NAME=%25__CONFIG_NAME%25
+</PreBuildEvent>
+  </PropertyGroup>
+</Project>
