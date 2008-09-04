@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B2F2688-7621-4CD4-A916-979499465A1E}</ProjectGuid>
+    <ProjectGuid>{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenCS.Common</RootNamespace>
-    <AssemblyName>OpenCS.Common</AssemblyName>
+    <RootNamespace>OpenCS.Common.Worker.WinForms</RootNamespace>
+    <AssemblyName>OpenCS.Common.Worker.WinForms</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -18,7 +18,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\OpenCS.Common.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,32 +30,34 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionEnums.cs" />
-    <Compile Include="Action\IAction.cs" />
-    <Compile Include="Action\IActionHandler.cs" />
-    <Compile Include="Action\PropertyAction.cs" />
-    <Compile Include="GenericClassFactory.cs" />
-    <Compile Include="IMessageDialog.cs" />
-    <Compile Include="IMessageDialogFactory.cs" />
-    <Compile Include="Logging\ConsoleLogger.cs" />
-    <Compile Include="Logging\ILoggable.cs" />
-    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="FormWorkerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWorkerManager.designer.cs">
+      <DependentUpon>FormWorkerManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource\IResourceChangeable.cs" />
-    <Compile Include="Resource\IResourceChangeFilter.cs" />
-    <Compile Include="Resource\IResourceChanger.cs" />
-    <Compile Include="Resource\IResourceManager.cs" />
-    <Compile Include="Resource\IResourceProvidable.cs" />
-    <Compile Include="Resource\IResourceProvider.cs" />
-    <Compile Include="Resource\ResourceChanger.cs" />
-    <Compile Include="Resource\ResourceManager.cs" />
-    <Compile Include="Singleton.cs" />
-    <Compile Include="StringUtils.cs" />
-    <Compile Include="Xml\XmlDocumenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormWorkerManager.resx">
+      <DependentUpon>FormWorkerManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCS.Common.Worker\OpenCS.Common.Worker.csproj">
+      <Project>{C2092D01-1B89-427B-8A5C-12E536EEECB7}</Project>
+      <Name>OpenCS.Common.Worker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common\OpenCS.Common.csproj">
+      <Project>{7B2F2688-7621-4CD4-A916-979499465A1E}</Project>
+      <Name>OpenCS.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -66,9 +67,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PreBuildEvent>set __CONFIG_NAME=$(ConfigurationName)
-echo __CONFIG_NAME=%25__CONFIG_NAME%25
-</PreBuildEvent>
-  </PropertyGroup>
 </Project>

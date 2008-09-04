@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCS.Common.WinForms", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCS.Common.Worker", "OpenCS.Common.Worker\OpenCS.Common.Worker.csproj", "{C2092D01-1B89-427B-8A5C-12E536EEECB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCS.Common.Worker.WinForms", "OpenCS.Common.Worker.WinForms\OpenCS.Common.Worker.WinForms.csproj", "{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{C2092D01-1B89-427B-8A5C-12E536EEECB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2092D01-1B89-427B-8A5C-12E536EEECB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2092D01-1B89-427B-8A5C-12E536EEECB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
