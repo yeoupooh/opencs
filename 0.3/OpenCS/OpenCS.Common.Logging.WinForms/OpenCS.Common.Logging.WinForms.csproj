@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B2F2688-7621-4CD4-A916-979499465A1E}</ProjectGuid>
+    <ProjectGuid>{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenCS.Common</RootNamespace>
-    <AssemblyName>OpenCS.Common</AssemblyName>
+    <RootNamespace>OpenCS.Common.Logging.WinForms</RootNamespace>
+    <AssemblyName>OpenCS.Common.Logging.WinForms</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -18,7 +18,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\OpenCS.Common.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,27 +34,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionEnums.cs" />
-    <Compile Include="Action\IAction.cs" />
-    <Compile Include="Action\IActionHandler.cs" />
-    <Compile Include="Action\PropertyAction.cs" />
-    <Compile Include="GenericClassFactory.cs" />
-    <Compile Include="IMessageDialog.cs" />
-    <Compile Include="IMessageDialogFactory.cs" />
-    <Compile Include="Logging\ILoggable.cs" />
-    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="ILogMessageBox.cs" />
+    <Compile Include="ListBoxLogger.cs" />
+    <Compile Include="LogMessageBox.cs" />
+    <Compile Include="LogUtils.cs" />
+    <Compile Include="MessageBoxLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource\IResourceChangeable.cs" />
-    <Compile Include="Resource\IResourceChangeFilter.cs" />
-    <Compile Include="Resource\IResourceChanger.cs" />
-    <Compile Include="Resource\IResourceManager.cs" />
-    <Compile Include="Resource\IResourceProvidable.cs" />
-    <Compile Include="Resource\IResourceProvider.cs" />
-    <Compile Include="Resource\ResourceChanger.cs" />
-    <Compile Include="Resource\ResourceManager.cs" />
-    <Compile Include="Singleton.cs" />
-    <Compile Include="StringUtils.cs" />
-    <Compile Include="Xml\XmlDocumenter.cs" />
+    <Compile Include="ToolStripItemLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCS.Common.Logging\OpenCS.Common.Logging.csproj">
+      <Project>{135F5CEA-5883-4D66-B697-CD0F80D3813B}</Project>
+      <Name>OpenCS.Common.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common\OpenCS.Common.csproj">
+      <Project>{7B2F2688-7621-4CD4-A916-979499465A1E}</Project>
+      <Name>OpenCS.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -65,9 +60,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PreBuildEvent>set __CONFIG_NAME=$(ConfigurationName)
-echo __CONFIG_NAME=%25__CONFIG_NAME%25
-</PreBuildEvent>
-  </PropertyGroup>
 </Project>

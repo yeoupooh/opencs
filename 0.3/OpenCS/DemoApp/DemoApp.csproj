@@ -69,9 +69,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCS.Common.AutoUpdate\OpenCS.Common.AutoUpdate.csproj">
+      <Project>{00B5F842-A698-49BB-B903-D1A8BBD256A8}</Project>
+      <Name>OpenCS.Common.AutoUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Http\OpenCS.Common.Http.csproj">
+      <Project>{BFEBC65F-31E9-44D2-BCC1-41BB90BE2B93}</Project>
+      <Name>OpenCS.Common.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Logging.WinForms\OpenCS.Common.Logging.WinForms.csproj">
+      <Project>{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}</Project>
+      <Name>OpenCS.Common.Logging.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Logging\OpenCS.Common.Logging.csproj">
+      <Project>{135F5CEA-5883-4D66-B697-CD0F80D3813B}</Project>
+      <Name>OpenCS.Common.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCS.Common.Plugin\OpenCS.Common.Plugin.csproj">
       <Project>{794BA4D4-1DCF-43E4-ABF0-D3BA636DC270}</Project>
       <Name>OpenCS.Common.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Test\OpenCS.Common.Test.csproj">
+      <Project>{498EF9D0-5609-4DE9-A330-74095661FDF4}</Project>
+      <Name>OpenCS.Common.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.WinForms\OpenCS.Common.WinForms.csproj">
+      <Project>{058E4A01-9177-4288-B4C2-DA9914D68334}</Project>
+      <Name>OpenCS.Common.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Worker.WinForms\OpenCS.Common.Worker.WinForms.csproj">
+      <Project>{F052357D-303F-480F-B8FB-3DA9AA0DFFA8}</Project>
+      <Name>OpenCS.Common.Worker.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common.Worker\OpenCS.Common.Worker.csproj">
+      <Project>{C2092D01-1B89-427B-8A5C-12E536EEECB7}</Project>
+      <Name>OpenCS.Common.Worker</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCS.Common\OpenCS.Common.csproj">
       <Project>{7B2F2688-7621-4CD4-A916-979499465A1E}</Project>
