@@ -81,9 +81,9 @@ namespace OpenCS.Common.WinForms
                 return true;
             }
 
-            if (obj is ToolStripDropDownButton)
+            if (obj is ToolStripDropDownItem)
             {
-                foreach (ToolStripItem item in (obj as ToolStripDropDownButton).DropDownItems)
+                foreach (ToolStripItem item in (obj as ToolStripDropDownItem).DropDownItems)
                 {
                     rc.Change(item);
                 }
