@@ -9,8 +9,13 @@ namespace OpenCS.Common
     /// <summary>
     /// 문자열 관련 유틸 클래스.
     /// </summary>
-    public class StringUtils
+    public static class StringUtils
     {
+        /// <summary>
+        /// Tags for excluing
+        /// </summary>
+        public static string ExcludeTagsPattern;
+
         /// <summary>
         /// HTML 태그를 없앤다. 참고 주소: http://www.developerfusion.co.uk/show/3901/
         /// 
@@ -21,6 +26,57 @@ namespace OpenCS.Common
         {
             Regex re = new Regex("<[^>]*>");
             return re.Replace(src, "");
+        }
+
+        /// <summary>
+        /// Evaluator for <c>StripTags</c>.
+        /// </summary>
+        /// <param name="match"><c>Match</c></param>
+        /// <returns>Stripped tag string</returns>
+        public static string OnMatch(Match match)
+        {
+            string output = match.Groups[0].Value;
+
+            if (string.IsNullOrEmpty(ExcludeTagsPattern) == false)
+            {
+                Regex re = new Regex(ExcludeTagsPattern);
+                if (re.Matches(output).Count > 0)
+                {
+                    return output;
+                }
+            }
+
+            return "";
+        }
+
+        /// <summary>
+        /// Remove HTML tags with options. See also http://www.developerfusion.co.uk/show/3901/, 
+        /// http://forums.asp.net/t/1323604.aspx
+        /// </summary>
+        /// <param name="src">Source text string</param>
+        /// <param name="removeScripts">Remove scripts at first</param>
+        /// <param name="excludeTagsPattern">Pattern of exclude tags</param>
+        /// <returns>Stripped text strign</returns>
+        public static string StripTags(string src, bool removeScripts, string excludeTagsPattern)
+        {
+            string output = src;
+
+            // remove scripts
+            // http://forums.asp.net/t/1323604.aspx
+            if (removeScripts == true)
+            {
+                output = Regex.Replace(output, "<script.*?</script>", "", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                output = Regex.Replace(output, "<style.*?</style>", "", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+            }
+
+            // Assign the replace method to the MatchEvaluator delegate.
+            ExcludeTagsPattern = excludeTagsPattern;
+            MatchEvaluator evaluator = new MatchEvaluator(OnMatch);
+
+            Regex re = new Regex("<[^>]*>");
+            output = re.Replace(output, evaluator);
+
+            return output;
         }
 
         /// <summary>
