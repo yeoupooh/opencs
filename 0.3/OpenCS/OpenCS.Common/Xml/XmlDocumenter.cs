@@ -80,7 +80,7 @@ namespace OpenCS.Common.Xml
         /// </summary>
         /// <param name="parent">부모 노드</param>
         /// <param name="name">엘리먼트 이름</param>
-        /// <param name="name">텍스트 값</param>
+        /// <param name="text">텍스트 값</param>
         /// <returns>추가된 엘리먼트</returns>
         public XmlElement AppendTextChild(XmlNode parent, string name, string text)
         {
