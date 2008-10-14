@@ -39,7 +39,7 @@ namespace OpenCS.Common
 
             if (string.IsNullOrEmpty(ExcludeTagsPattern) == false)
             {
-                Regex re = new Regex(ExcludeTagsPattern);
+                Regex re = new Regex(ExcludeTagsPattern, RegexOptions.IgnoreCase);
                 if (re.Matches(output).Count > 0)
                 {
                     return output;
