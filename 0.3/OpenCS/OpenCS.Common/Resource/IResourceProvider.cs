@@ -10,10 +10,10 @@ namespace OpenCS.Common.Resource
     public interface IResourceProvider
     {
         /// <summary>
-        /// 문자열 리소스를 가져온다.
+        /// Gets string resource. 문자열 리소스를 가져온다.
         /// </summary>
-        /// <param name="resourceId">리소스 아이디</param>
-        /// <returns>가져온 문자열 리소스</returns>
+        /// <param name="resourceId">Resource Id. 리소스 아이디</param>
+        /// <returns>String resource. 가져온 문자열 리소스</returns>
         string GetString(string resourceId);
     }
 }

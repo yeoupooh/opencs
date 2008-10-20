@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCS.Common.Logging.WinForms", "OpenCS.Common.Logging.WinForms\OpenCS.Common.Logging.WinForms.csproj", "{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCS.Common.AutoUpdate.WinForms", "OpenCS.Common.AutoUpdate.WinForms\OpenCS.Common.AutoUpdate.WinForms.csproj", "{A498BA77-63FB-486A-BC54-39F318473BD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB788C32-9D85-42A4-B5E4-D71DB4B41C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A498BA77-63FB-486A-BC54-39F318473BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A498BA77-63FB-486A-BC54-39F318473BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A498BA77-63FB-486A-BC54-39F318473BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A498BA77-63FB-486A-BC54-39F318473BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

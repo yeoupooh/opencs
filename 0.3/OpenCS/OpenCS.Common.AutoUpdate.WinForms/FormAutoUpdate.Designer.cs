@@ -1,4 +1,4 @@
-﻿namespace OpenCS.Common.AutoUpdate
+﻿namespace OpenCS.Common.AutoUpdate.WinForms
 {
     partial class FormAutoUpdate
     {
@@ -66,7 +66,7 @@
             this.buttonDownload.Name = "buttonDownload";
             this.buttonDownload.Size = new System.Drawing.Size(111, 30);
             this.buttonDownload.TabIndex = 0;
-            this.buttonDownload.Text = "Download";
+            this.buttonDownload.Text = "$[LABEL_DOWNLOAD]";
             this.buttonDownload.UseVisualStyleBackColor = true;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
@@ -78,7 +78,7 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 30);
             this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.Text = "$[LABEL_CANCEL]";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // labelMessage
@@ -87,9 +87,9 @@
             this.labelMessage.AutoSize = true;
             this.labelMessage.Location = new System.Drawing.Point(12, 511);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(62, 12);
+            this.labelMessage.Size = new System.Drawing.Size(110, 12);
             this.labelMessage.TabIndex = 3;
-            this.labelMessage.Text = "Loading...";
+            this.labelMessage.Text = "$[MSG_LOADING]";
             this.labelMessage.Visible = false;
             // 
             // FormAutoUpdate
@@ -107,7 +107,7 @@
             this.Name = "FormAutoUpdate";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Version Here!";
+            this.Text = "$[LABEL_NEW_VERSION_HERE]";
             this.ResumeLayout(false);
             this.PerformLayout();
 
