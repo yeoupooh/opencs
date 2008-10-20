@@ -5,5 +5,5 @@
 	<Files>
 		<File Id="1" Name="AutoUpdateProvider.xml" Url="http://opencs.googlecode.com/svn/trunk/0.3/OpenCS/AutoUpdateProvider.xml"/>
 	</Files>
-	<Excute FileId="1"/>
+	<Execute FileId="1"/>
 </AutoUpdate>
