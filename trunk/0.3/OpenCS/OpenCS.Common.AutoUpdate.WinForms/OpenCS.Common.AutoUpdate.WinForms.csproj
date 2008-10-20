@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B2F2688-7621-4CD4-A916-979499465A1E}</ProjectGuid>
+    <ProjectGuid>{A498BA77-63FB-486A-BC54-39F318473BD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenCS.Common</RootNamespace>
-    <AssemblyName>OpenCS.Common</AssemblyName>
+    <RootNamespace>OpenCS.Common.AutoUpdate.WinForms</RootNamespace>
+    <AssemblyName>OpenCS.Common.AutoUpdate.WinForms</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -18,7 +18,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\OpenCS.Common.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,37 +30,34 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionEnums.cs" />
-    <Compile Include="Action\IAction.cs" />
-    <Compile Include="Action\IActionHandler.cs" />
-    <Compile Include="Action\PropertyAction.cs" />
-    <Compile Include="GenericClassFactory.cs" />
-    <Compile Include="IDialog.cs" />
-    <Compile Include="IMessageDialog.cs" />
-    <Compile Include="IMessageDialogFactory.cs" />
-    <Compile Include="Logging\ILoggable.cs" />
-    <Compile Include="Logging\ILogger.cs" />
-    <Compile Include="OpenCSException.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource\DummyResourceProvider.cs" />
-    <Compile Include="Resource\IResourceChangeable.cs" />
-    <Compile Include="Resource\IResourceChangeFilter.cs" />
-    <Compile Include="Resource\IResourceChanger.cs" />
-    <Compile Include="Resource\IResourceManager.cs" />
-    <Compile Include="Resource\IResourceProvidable.cs" />
-    <Compile Include="Resource\IResourceProvider.cs" />
-    <Compile Include="Resource\ResourceChanger.cs" />
-    <Compile Include="Resource\ResourceManager.cs" />
-    <Compile Include="Singleton.cs" />
-    <Compile Include="StringUtils.cs" />
-    <Compile Include="TimedWebClient.cs">
-      <SubType>Component</SubType>
+    <Compile Include="FormAutoUpdate.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Xml\XmlDocumenter.cs" />
+    <Compile Include="FormAutoUpdate.Designer.cs">
+      <DependentUpon>FormAutoUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormAutoUpdate.resx">
+      <DependentUpon>FormAutoUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCS.Common.AutoUpdate\OpenCS.Common.AutoUpdate.csproj">
+      <Project>{00B5F842-A698-49BB-B903-D1A8BBD256A8}</Project>
+      <Name>OpenCS.Common.AutoUpdate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCS.Common\OpenCS.Common.csproj">
+      <Project>{7B2F2688-7621-4CD4-A916-979499465A1E}</Project>
+      <Name>OpenCS.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -71,9 +67,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PreBuildEvent>set __CONFIG_NAME=$(ConfigurationName)
-echo __CONFIG_NAME=%25__CONFIG_NAME%25
-</PreBuildEvent>
-  </PropertyGroup>
 </Project>

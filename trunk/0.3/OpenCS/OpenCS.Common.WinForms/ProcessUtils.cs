@@ -35,7 +35,7 @@ namespace OpenCS.Common.WinForms
         }
 
         #region Launch Process
-       
+
         /// <summary>
         /// 프로세스를 시작한다. Win32Exception이 발생하면 오류 메시지를 출력한다.
         /// </summary>
@@ -178,11 +178,25 @@ namespace OpenCS.Common.WinForms
         /// <returns>성공하면 <c>true</c></returns>
         public static bool LaunchProcess(string executable)
         {
+            return LaunchProcess(executable, null);
+        }
+
+        /// <summary>
+        /// Launch process.
+        /// </summary>
+        /// <param name="executable">Executable name.</param>
+        /// <param name="arguments">Arguments.</param>
+        /// <returns>true if launching is succeed.</returns>
+        public static bool LaunchProcess(string executable, string arguments)
+        {
             Debug.Assert(executable != null);
 
             try
             {
-                Process.Start(executable);
+                Process p = new Process();
+                p.StartInfo.FileName = executable;
+                p.StartInfo.Arguments = arguments;
+                p.Start();
 
                 return true;
             }

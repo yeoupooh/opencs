@@ -69,6 +69,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenCS.Common.AutoUpdate.WinForms\OpenCS.Common.AutoUpdate.WinForms.csproj">
+      <Project>{A498BA77-63FB-486A-BC54-39F318473BD0}</Project>
+      <Name>OpenCS.Common.AutoUpdate.WinForms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenCS.Common.AutoUpdate\OpenCS.Common.AutoUpdate.csproj">
       <Project>{00B5F842-A698-49BB-B903-D1A8BBD256A8}</Project>
       <Name>OpenCS.Common.AutoUpdate</Name>
@@ -109,6 +113,11 @@
       <Project>{7B2F2688-7621-4CD4-A916-979499465A1E}</Project>
       <Name>OpenCS.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AutoUpdateConsumer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoUpdate Version="1.1" Type="Consumer">
+	<Version>0.0.0.1</Version>
+	<Provider Url="http://opencs.googlecode.com/svn/trunk/0.3/OpenCS/AutoUpdateProvider.xml"/>
+</AutoUpdate>
