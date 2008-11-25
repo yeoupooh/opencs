@@ -9,75 +9,119 @@ namespace OpenCS.Common.Http
 {
     public class HttpFileGetter : BaseHttpConnection, IHttpGetter
     {
-        private IProgressView m_pv;
-        private string m_filename;
+        private IProgressView mPv;
+        private string mFileName;
+
+        private HttpResult mResult;
+        private HttpWebRequest mReq;
+        private HttpWebResponse mRes;
+        private StreamReader mSr;
+        private HttpWebResponse mResDown;
+        private BinaryReader mReader;
+        private FileStream mFs;
+        private long mContentLength;
+        private long mDownSize = 0;
 
         public IProgressView ProgressView
         {
-            get { return m_pv; }
-            set { m_pv = value; }
+            get { return mPv; }
+            set { mPv = value; }
         }
 
         public HttpFileGetter(string url, string filename)
             : base(url)
         {
-            m_filename = filename;
+            mFileName = filename;
         }
 
         #region IHttpGetter 멤버
 
         public HttpResult Get()
         {
-            HttpResult result = new HttpResult();
-
-            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(Url);
-            if (Cc != null)
+            if (BeginGet() == true)
             {
-                req.CookieContainer = Cc;
+                while (GetNext())
+                {
+                }
             }
-            req.Method = "GET";
+            mResult = EndGet();
 
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            StreamReader sr = new StreamReader(res.GetResponseStream());
+            return mResult;
+        }
+
+        #endregion
+
+        #region IHttpGetter 멤버
+
+        public bool BeginGet()
+        {
+            mReq = (HttpWebRequest)HttpWebRequest.Create(Url);
+            if (Cc != null)
+            {
+                mReq.CookieContainer = Cc;
+            }
+            mReq.Method = "GET";
+
+            mRes = (HttpWebResponse)mReq.GetResponse();
+            mSr = new StreamReader(mRes.GetResponseStream());
 
             if (Cc != null)
             {
-                AddCookies(Cc, req.RequestUri, res);
+                AddCookies(Cc, mReq.RequestUri, mRes);
             }
 
             // download
-            using (HttpWebResponse resDown = req.GetResponse() as HttpWebResponse)
+            mResDown = mReq.GetResponse() as HttpWebResponse;
+            mContentLength = mResDown.ContentLength;
+            if (mContentLength > 0)
             {
-                if (resDown.ContentLength > 0)
-                {
-                    using (BinaryReader reader = new BinaryReader(resDown.GetResponseStream(), Encoding.UTF8))
-                    {
-                        using (FileStream fs = new FileStream(m_filename, FileMode.Create))
-                        {
-                            int downSize = 0;
-                            while (true)
-                            {
-                                byte[] readContents = reader.ReadBytes(2048);
-
-                                downSize += readContents.Length;
-                                if (m_pv != null)
-                                {
-                                    m_pv.SetProgress((int)((float)downSize / resDown.ContentLength * 100));
-                                }
-
-                                if (readContents.Length == 0)
-                                {
-                                    break;
-                                }
-                                fs.Write(readContents, 0, readContents.Length);
-                            }
-                        }
-                    }
-                }
+                mReader = new BinaryReader(mResDown.GetResponseStream(), Encoding.UTF8);
+                mFs = new FileStream(mFileName, FileMode.Create);
             }
 
+            mDownSize = 0;
 
-            return result;
+            return (mContentLength > 0) ? true : false;
+        }
+
+        public bool GetNext()
+        {
+            byte[] readContents = mReader.ReadBytes(2048);
+
+            mDownSize += readContents.Length;
+            if (mPv != null)
+            {
+                mPv.SetProgress((int)((float)mDownSize / mContentLength * 100));
+            }
+
+            if (readContents.Length == 0)
+            {
+                return false;
+            }
+
+            mFs.Write(readContents, 0, readContents.Length);
+
+            return (mDownSize > 0) ? true : false;
+        }
+
+        public HttpResult EndGet()
+        {
+            if (mFs != null)
+            {
+                mFs.Close();
+            }
+
+            if (mReader != null)
+            {
+                mReader.Close();
+            }
+
+            if (mSr != null)
+            {
+                mSr.Close();
+            }
+
+            return mResult;
         }
 
         #endregion

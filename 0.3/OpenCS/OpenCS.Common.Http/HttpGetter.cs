@@ -31,5 +31,25 @@ namespace OpenCS.Common.Http
 
             return result;
         }
+
+        #region IHttpGetter 멤버
+
+
+        public bool BeginGet()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public bool GetNext()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public HttpResult EndGet()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
     }
 }
