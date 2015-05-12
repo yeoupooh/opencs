@@ -1,0 +1,1 @@
+This project provides helpful libraries for C# application development.
